@@ -8,7 +8,7 @@
 def subset(input_list:list,start_index:int,end_index:int)->list:
   out_list=[]
   i = start_index
-  while(i<= end_index and < len(input_list)):
+  while (i<= end_index and i < len(input_list)):
     output_list.append(input_list[i])
     i=i+1
   return out_list
@@ -54,13 +54,13 @@ def flatten(input_list : list) -> list:
 #function name must be: merge_lists
 #input parameters: *args
 
-def merge_lists(*args) -> list
-   output=[]
-   for a in args:
+def merge_lists(*args) -> list:
+    output = []
+    for a in args:
      for item in a:
        if item not in output:
-         output.append(item)
-  return output
+          output.append(item)
+    return output
 
 #Create a function that can reverse a list of tuples
 #example [(1,2),...] => [(2,1),...]
