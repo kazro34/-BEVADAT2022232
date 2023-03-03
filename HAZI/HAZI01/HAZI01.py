@@ -9,7 +9,7 @@ def subset(input_list:list,start_index:int,end_index:int)->list:
   out_list=[]
   i = start_index
   while (i<= end_index and i < len(input_list)):
-    output_list.append(input_list[i])
+    out_list.append(input_list[i])
     i=i+1
   return out_list
 
@@ -21,7 +21,7 @@ def subset(input_list:list,start_index:int,end_index:int)->list:
 def every_nth(input_list:list, step_size:int)-> list:
   out_list = []
   for i in range( step_size-1, len(input_list), step_size):
-    result.append(input_list[i])
+    out_list.append(input_list[i])
   return out_list
 
 #Create a function that can decide whether a list contains unique values or not
@@ -152,9 +152,9 @@ def by_parity(input_list : list) -> dict:
   odd = []
   for item in input_list:
     if item & 1:
-      odd.append(x)
+      odd.append(item)
     else:
-      even.append(x)
+      even.append(item)
   return{'even' : even, 'odd' : odd}
 
 #Create a function that receives a dictionary like this: {"some_key":[1,2,3,4],"another_key":[1,2,3,4],....}
