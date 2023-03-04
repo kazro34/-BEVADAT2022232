@@ -8,7 +8,7 @@
 def subset(input_list:list,start_index:int,end_index:int)->list:
   out_list=[]
   i = start_index
-  while (i<= end_index and i < len(input_list)):
+  while(i<= end_index and i < len(input_list)):
     out_list.append(input_list[i])
     i=i+1
   return out_list
@@ -72,7 +72,7 @@ def reverse_tuples(input_list : list) -> list:
   output = []
   for _tuple in input_list:
     Temp=[]
-    for i in range(len(Temp)-1, -1 ,-1):
+    for i in range(len(_tuple)-1, -1 ,-1):
       Temp.append(_tuple[i])
     output.append(tuple(Temp))
   return output
@@ -82,7 +82,7 @@ def reverse_tuples(input_list : list) -> list:
 #fucntion name must be: remove_tuplicates
 #input parameters: input_list
 
-def remove_tuplicates(input_list : list) -> list:
+def remove_duplicates(input_list : list) -> list:
     remove=[]
     for i in range(0, len(input_list),1):
       for j in range(len(input_list)-1, -1, -1):
@@ -106,7 +106,7 @@ def transpose(input_list : list) -> list:
     for j in range(len(input_list[i])):
       temp.append(0)
     output.append(temp)
-  for i in range(len(input_list[i])):
+  for i in range(len(input_list)):
     for j in range(len(input_list[i])):
      output[i][j]=input_list[j][i]
   return output
@@ -152,9 +152,9 @@ def by_parity(input_list : list) -> dict:
   odd = []
   for item in input_list:
     if item & 1:
-      odd.append(item)
+      odd.append(x)
     else:
-      even.append(item)
+      even.append(x)
   return{'even' : even, 'odd' : odd}
 
 #Create a function that receives a dictionary like this: {"some_key":[1,2,3,4],"another_key":[1,2,3,4],....}
