@@ -5,12 +5,8 @@
 #function name must be: subset
 #input parameters: input_list,start_index,end_index
 
-def subset(input_list:list,start_index:int,end_index:int)->list:
-  out_list=[]
-  i = start_index
-  while(i<= end_index and i < len(input_list)):
-    out_list.append(input_list[i])
-    i=i+1
+def subset(input_list, start_index, end_index)->list:
+  out_list=input_list[start_index:end_index]
   return out_list
 
 #Create a function that returns every nth element of a list.
@@ -18,10 +14,8 @@ def subset(input_list:list,start_index:int,end_index:int)->list:
 #function name must be: every_nth
 #input parameters: input_list,step_size
 
-def every_nth(input_list:list, step_size:int)-> list:
-  out_list = []
-  for i in range( step_size-1, len(input_list), step_size):
-    out_list.append(input_list[i])
+def every_nth(input_list, step_size)-> list:
+  out_list =input_list[::step_size]
   return out_list
 
 #Create a function that can decide whether a list contains unique values or not
@@ -55,12 +49,12 @@ def flatten(input_list : list) -> list:
 #input parameters: *args
 
 def merge_lists(*args) -> list:
-    output = []
-    for a in args:
+   output=[]
+   for a in args:
      for item in a:
        if item not in output:
-          output.append(item)
-    return output
+         output.append(item)
+     return output
 
 #Create a function that can reverse a list of tuples
 #example [(1,2),...] => [(2,1),...]
@@ -99,16 +93,11 @@ def remove_duplicates(input_list : list) -> list:
 #function name must be: transpose
 #input parameters: input_list
 
-def transpose(input_list : list) -> list:
-  output = []
-  for i in range(len(input_list)):
-    temp=[]
-    for j in range(len(input_list[i])):
-      temp.append(0)
-    output.append(temp)
-  for i in range(len(input_list)):
-    for j in range(len(input_list[i])):
-     output[i][j]=input_list[j][i]
+def transpose(input_list) -> list:
+  output = [[0 for x in range(len(input_list))] for y in range(len(input_list[0]))]
+  for i, x in enumerate(input_list):
+    for j, y in enumerate(x):
+     output[j][i]=y
   return output
 
 #Create a function that can split a nested list into chunks
@@ -151,10 +140,10 @@ def by_parity(input_list : list) -> dict:
   even = []
   odd = []
   for item in input_list:
-    if item & 1:
-      odd.append(x)
+    if item % 2!=0:
+      odd.append(item)
     else:
-      even.append(x)
+      even.append(item)
   return{'even' : even, 'odd' : odd}
 
 #Create a function that receives a dictionary like this: {"some_key":[1,2,3,4],"another_key":[1,2,3,4],....}
