@@ -13,7 +13,7 @@ import numpy as np
 #Ki: [[0,0],[0,0]]
 #create_array()
 
-def create_array(size: (2,2)) -> np.array:
+def create_array(size=(2,2))->np.array:
     array1 = np.array(size)
     return array1
 
@@ -48,23 +48,24 @@ def round_array(arr1: np.array, ker:int=2) -> np.array:
 # Ki: [[ True False False], [ True  True  True], [False False False]]
 # bool_array()
 
-def bool_array(arr1: np.array) -> np.array:
-    arr1=np.array(arr1,dtype=bool)
+def bool_array(array:np.array)->np.array:
+    array=np.array(array,dtype=bool)
+    return array
 
 # Készíts egy olyan függvényt, ami a bementként kapott 0 és 1 ből álló tömben a 1 - False-ra az 0 True-ra cserélni
 # Be: [[1, 0, 0], [1, 1, 1],[0, 0, 0]]
 # Ki: [[ False True True], [ False  False  False], [True True True]]
 # invert_bool_array()
 
-def invert_bool_array(arr1: np.array) -> np.array:
-  arr2=1-arr1
-  arr2=arr2.astype(bool)
-  return arr2
+def invert_bool_array(array:np.array)->np.array:
+    array=np.invert(np.array(array,dtype=bool))
+    
+    return array
 
 # Készíts egy olyan függvényt ami a paraméterként kapott array-t kilapítja
 # Be: [[1,2], [3,4]]
 # Ki: [1,2,3,4]
 # flatten()
 
-def flatten(arr1: np.array, arr2: np.array) -> np.array:
-  return np.concatenate((arr1, arr2))
+def flatten(input:np.array):
+    return input.flatten()
