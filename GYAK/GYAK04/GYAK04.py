@@ -114,5 +114,6 @@ függvény neve: plot_area
 def plot_area(test_df:pd.DataFrame) ->plt.Figure:
     new_df = test_df.copy()
     fig, ax = plt.subplots()
+    ax.set_title('Area of Countries')
     ax.pie(new_df['area'], labels=new_df['country'])
     return fig
