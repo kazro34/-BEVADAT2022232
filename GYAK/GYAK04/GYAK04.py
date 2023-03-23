@@ -93,7 +93,7 @@ def plot_population(test_df:pd.DataFrame) ->plt.Figure:
     new_df = test_df.copy()
     fig, ax = plt.subplots()
   
-    ax.bar(new_df['country'], new_df['population'], width = 0.4)
+    ax.bar(new_df['country'], new_df['population'])
     ax.set_xlabel('Country')
     ax.set_ylabel('Population (millions)')
     ax.set_title('Population of Countries')
