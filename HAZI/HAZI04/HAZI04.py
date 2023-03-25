@@ -97,7 +97,7 @@ függvény neve: add_age
 def add_age(df_data):
     df_copy = df_data.copy()
     np.random.seed(42)
-    df_copy['age']=np.random.randint(18,66,df.shape[0])
+    df_copy['age']=np.random.randint(18,67,df.shape[0])
     return df_copy
 
 '''
