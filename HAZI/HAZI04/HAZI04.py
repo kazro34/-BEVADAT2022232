@@ -26,8 +26,8 @@ függvény neve: csv_to_df
 '''
 
 def csv_to_df(str):
-    df_data = pd.read_csv("str")
-    return pd.DataFrame(df_data)
+    data = pd.read_csv("str")
+    return pd.DataFrame(data)
 
 '''
 Készíts egy függvényt, ami egy DataFrame-et vár paraméterként, 
@@ -111,7 +111,7 @@ függvény neve: female_top_score
 
 def female_top_score(df_data):
     df_copy = df_data.copy()
-    df_copy["total"]=df['math score']+df['reading score']+df['writing score']
+    df_copy["total"]=(df_copy['math score']+df_copy['reading score']+df_copy['writing score'])/300
     return tuple(df_copy.nlargest(1,'total').where(df['gender']=='female').values.tolist()[0][5:8])
 
 '''
@@ -133,7 +133,7 @@ függvény neve: add_grade
 def add_grade(df_data):
     df_copy = df_data.copy()
     grade=[]
-    df_copy["total"]=(df['math score']+df['reading score']+df['writing score'])/300
+    df_copy["total"]=(df_copy['math score']+df_copy['reading score']+df_copy['writing score'])/300
     for row in df_copy['total']:
         if row > 0.90:grade.append('A')
         elif row > 0.80:grade.append('B')
@@ -162,7 +162,7 @@ def math_bar_plot(df_data):
     df_copy = df_data.copy()
     df_seged=df_copy.groupby('gender').mean()
     df_seged = df_seged.drop(df_seged.colums[[1,2]], axis=1)
-    fig=df_seged.plot(kind='bar', title='Average Math Score by Gender',ylabel='Math Score',xlabel='Gender')
+    fig=df_seged.plot(kind='bar', title='Average Math Score by Gender', ylabel='Math Score', xlabel='Gender')
     return fig
 
 ''' 
