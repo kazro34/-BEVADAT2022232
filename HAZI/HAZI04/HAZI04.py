@@ -27,7 +27,7 @@ függvény neve: csv_to_df
 
 def csv_to_df(str):
     data = pd.read_csv("str")
-    return pd.DataFrame(data)
+    return data
 
 '''
 Készíts egy függvényt, ami egy DataFrame-et vár paraméterként, 
@@ -40,7 +40,7 @@ függvény neve: capitalize_columns
 '''
 
 def capitalize_columns(df_data):
-    df_copy=df_data.copy()
+    df_copy = df_data.copy()
     return df_copy.rename(colums=lambda x: x if ('e' in x) else x.upper())
 
 '''
@@ -97,7 +97,7 @@ függvény neve: add_age
 def add_age(df_data):
     df_copy = df_data.copy()
     np.random.seed(42)
-    df_copy['age']=np.random.randint(18,67,df.shape[0])
+    df_copy['age']=np.random.randint(18,67, df_copy.shape[0])
     return df_copy
 
 '''
@@ -111,7 +111,7 @@ függvény neve: female_top_score
 
 def female_top_score(df_data):
     df_copy = df_data.copy()
-    df_copy["total"]=(df_copy['math score']+df_copy['reading score']+df_copy['writing score'])/300
+    df_copy['total']=(df_copy['math score']+df_copy['reading score']+df_copy['writing score'])/300
     return tuple(df_copy.nlargest(1,'total').where(df['gender']=='female').values.tolist()[0][5:8])
 
 '''
@@ -133,7 +133,7 @@ függvény neve: add_grade
 def add_grade(df_data):
     df_copy = df_data.copy()
     grade=[]
-    df_copy["total"]=(df_copy['math score']+df_copy['reading score']+df_copy['writing score'])/300
+    df_copy['total']=(df_copy['math score']+df_copy['reading score']+df_copy['writing score'])/300
     for row in df_copy['total']:
         if row > 0.90:grade.append('A')
         elif row > 0.80:grade.append('B')
@@ -159,10 +159,14 @@ függvény neve: math_bar_plot
 '''
 
 def math_bar_plot(df_data):
-    df_copy = df_data.copy()
+    df_copy = df_data.copy()    
     df_seged=df_copy.groupby('gender').mean()
-    df_seged = df_seged.drop(df_seged.colums[[1,2]], axis=1)
-    fig=df_seged.plot(kind='bar', title='Average Math Score by Gender', ylabel='Math Score', xlabel='Gender')
+    df_seged = df_seged.drop(df_seged.columns[[1,2 ]], axis=1)
+    fig,ax=plt.subplots()
+    ax.bar(df_seged.index,df_seged['math score'])
+    ax.set_xlabel('Gender')
+    ax.set_ylabel('Math Score')
+    ax.set_title('Average Math Score by Gender')      
     return fig
 
 ''' 
@@ -181,9 +185,11 @@ függvény neve: writing_hist
 
 def writing_hist(df_data):
     df_copy = df_data.copy()
-    fig=df_copy['Writing Score'].plot(kind='hist', title='Distribution of Writing Scores')
-    fig.set_xlabel('Writing Score')
-    fig.set_ylabel('Number of Students')
+    fig,ax=plt.subplots()   
+    ax.hist(df_copy['writing score'])
+    ax.set_xlabel('Writing Score')
+    ax.set_ylabel('Number of Students')
+    ax.set_title('Distribution of Writing Scores')
     return fig
 
 ''' 
@@ -202,8 +208,8 @@ függvény neve: ethnicity_pie_chart
 
 def ethnicity_pie_chart(df_data):
     df_copy = df_data.copy()
-    eth = df_copy.groupby("race/etgnicity")["race/etgnicity"].count()
-    fig,ax = pls.subplots()
+    eth= df_copy.groupby("race/ethnicity")["race/ethnicity"].count()   
+    fig,ax=plt.subplots()
     ax.pie(eth.values, labels = eth.index, autopct="%0.01f%%")
     ax.set_title('Proportion of Students by Race/Ethnicity')
     return fig
