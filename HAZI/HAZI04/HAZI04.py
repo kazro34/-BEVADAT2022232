@@ -26,7 +26,7 @@ függvény neve: csv_to_df
 '''
 
 def csv_to_df(str):
-    data = pd.read_csv("str")
+    data = pd.read_csv(str)
     return data
 
 '''
