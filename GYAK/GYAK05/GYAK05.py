@@ -12,6 +12,7 @@ class KNNClassifier:
         self.k=k
         self.train_test_ratio = test_split_ratio
 
+    @property
     def k_neighbors(self):
         return self.k
     
@@ -49,4 +50,4 @@ class KNNClassifier:
     
     def confurion_matrix(self):
         conf_matrix = confusion_matrix(self.y_test,self.y_preds)
-        sns.heatmap(conf_matrix,annot=True)
+        return conf_matrix
