@@ -39,14 +39,15 @@ class KNNClassifier:
     def euclidean(self,element_of_x:np.ndarray)->np.ndarray:
         return np.sqrt(np.sum((self.x_train - element_of_x)**2, axis=1))
     
-    def predict(self,x_test:np.ndarray,k:int) -> np.ndarray:
+    def predict(self,x_test:np.ndarray) -> np.ndarray:
         label_pred =[]
         for x_test_element in x_test:
-           distances = self.euclidean(self.x_train,x_test)
+           distances = self.euclidean(self.x_train,x_test_element)
            distances = np.array(sorted(zip(distances,self.y_train)))
            label_pred = mode(distances[:self.k,1],keepdims=False).mode
            label_pred .append(label_pred)
         self.y_preds = np.array(label_pred,dtype=np.int32)
+        return self.y_pred
     
     def accuracy(self)->float:
         true_positve = (self.y_test == self.y_preds).sum()
