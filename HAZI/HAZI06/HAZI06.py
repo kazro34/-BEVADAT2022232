@@ -48,3 +48,154 @@ HAZI06-
 ##                                                              ##
 ##################################################################
 """
+
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+from DecisionTreeClassifier  import DecisionTreeClassifier
+
+
+
+
+
+col_name = ['stop_sequence' , 'from_id' , 'to_id' , 'status' , 'line' , 'type' , 'day', 'part_of_the_day' , 'delay']
+data = pd.read_csv('./NJ_60k.csv',skiprows=1, header=None, names=col_name)
+
+
+X =data.iloc[:, :-1].values
+Y =data.iloc[:,-1].values.reshape(-1,1)
+X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=.2,random_state=41)
+classifier = DecisionTreeClassifier(min_samples_split=25,max_depth=8)
+classifier.fit(X_train,Y_train)
+Y_pred=classifier.predict(X_test)
+print("min_samples_split=90,max_depth=12")
+print(accuracy_score(Y_test,Y_pred))
+print("*******************************")
+
+X =data.iloc[:, :-1].values
+Y =data.iloc[:,-1].values.reshape(-1,1)
+X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=.2,random_state=41)
+classifier = DecisionTreeClassifier(min_samples_split=12,max_depth=8)
+classifier.fit(X_train,Y_train)
+Y_pred=classifier.predict(X_test)
+print("min_samples_split=12,max_depth=8")
+print(accuracy_score(Y_test,Y_pred))
+print("*******************************")
+
+
+X =data.iloc[:, :-1].values
+Y =data.iloc[:,-1].values.reshape(-1,1)
+X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=.2,random_state=41)
+classifier = DecisionTreeClassifier(min_samples_split=25,max_depth=7)
+classifier.fit(X_train,Y_train)
+Y_pred=classifier.predict(X_test)
+print("min_samples_split=25,max_depth=7")
+print(accuracy_score(Y_test,Y_pred))
+print("*******************************")
+
+
+X =data.iloc[:, :-1].values
+Y =data.iloc[:,-1].values.reshape(-1,1)
+X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=.2,random_state=41)
+classifier = DecisionTreeClassifier(min_samples_split=12,max_depth=7)
+classifier.fit(X_train,Y_train)
+Y_pred=classifier.predict(X_test)
+print("min_samples_split=12,max_depth=7")
+print(accuracy_score(Y_test,Y_pred))
+print("*******************************")
+
+
+
+X =data.iloc[:, :-1].values
+Y =data.iloc[:,-1].values.reshape(-1,1)
+X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=.2,random_state=41)
+classifier = DecisionTreeClassifier(min_samples_split=10,max_depth=7)
+classifier.fit(X_train,Y_train)
+Y_pred=classifier.predict(X_test)
+print("min_samples_split=10,max_depth=7")
+print(accuracy_score(Y_test,Y_pred))
+print("*******************************")
+
+
+
+X =data.iloc[:, :-1].values
+Y =data.iloc[:,-1].values.reshape(-1,1)
+X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=.2,random_state=41)
+classifier = DecisionTreeClassifier(min_samples_split=25,max_depth=4)
+classifier.fit(X_train,Y_train)
+Y_pred=classifier.predict(X_test)
+print("min_samples_split=25,max_depth=4")
+print(accuracy_score(Y_test,Y_pred))
+print("*******************************")
+
+
+X =data.iloc[:, :-1].values
+Y =data.iloc[:,-1].values.reshape(-1,1)
+X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=.2,random_state=41)
+classifier = DecisionTreeClassifier(min_samples_split=12,max_depth=4)
+classifier.fit(X_train,Y_train)
+Y_pred=classifier.predict(X_test)
+print("min_samples_split=12,max_depth=4")
+print(accuracy_score(Y_test,Y_pred))
+print("*******************************")
+
+
+X =data.iloc[:, :-1].values
+Y =data.iloc[:,-1].values.reshape(-1,1)
+X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=.2,random_state=41)
+classifier = DecisionTreeClassifier(min_samples_split=4,max_depth=4)
+classifier.fit(X_train,Y_train)
+Y_pred=classifier.predict(X_test)
+print("min_samples_split=4,max_depth=4")
+print(accuracy_score(Y_test,Y_pred))
+print("*******************************")
+
+
+X =data.iloc[:, :-1].values
+Y =data.iloc[:,-1].values.reshape(-1,1)
+X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=.2,random_state=41)
+classifier = DecisionTreeClassifier(min_samples_split=3,max_depth=4)
+classifier.fit(X_train,Y_train)
+Y_pred=classifier.predict(X_test)
+print("min_samples_split=3,max_depth=4")
+print(accuracy_score(Y_test,Y_pred))
+print("*******************************")
+
+X =data.iloc[:, :-1].values
+Y =data.iloc[:,-1].values.reshape(-1,1)
+X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=.2,random_state=41)
+classifier = DecisionTreeClassifier(min_samples_split=3,max_depth=4)
+classifier.fit(X_train,Y_train)
+Y_pred=classifier.predict(X_test)
+print("min_samples_split=7,max_depth=7")
+print(accuracy_score(Y_test,Y_pred))
+print("*******************************")
+
+
+"""
+4. feladat.
+
+A Feladat nehézségét leginkább az okozta hogy ebben a félévben kezdtem el használni a python-t
+így a hiba keresés az nehéz volt, 3 órán át keresgéltem a typo-kat mire megtaláltam mindet és lefutott rendesen.
+
+A tanítással is elvoltam 3 és fél órán át, próbáltam kitalálni hogy milyen a legjobb max depth, split párosítás, de elsőkörben a 
+10nél nagyobb depth mindig hibát dobott, szaktársal való konzultáció után rájöttem hogy egy picit át kell írni a DecisionTreeClassifier-t.
+
+Ezután már rendesen lefutott, viszont se a saját tisztított adataimból, se a letöltött minta NJ_60k.csv-ből nem tudtam 79,5%nál nagyobb 
+accuracy-t csiholni, még azokkal a paraméterekkel(min_samples_split=90,max_depth=12) sem amiket haver mondott hogy azzal neki elég magas lett.
+
+Eredmények:
+
+split= 90,depth= 12 -> Accuracy=0.79533333333
+split= 12,depth= 8 -> Accuracy=0.79558333333 <-Legjobb
+split= 25,depth=  7-> Accuracy=0.79366666666
+split= 12,depth=  7-> Accuracy=0.7935
+split= 10,depth=  7-> Accuracy=0.7935
+split= 25,depth=  4-> Accuracy=0.7849166666667
+split= 12,depth=  4-> Accuracy=0.7849166666667
+split= 4,depth=  4-> Accuracy=0.7849166666667
+split= 3,depth=  4-> Accuracy=0.7849166666667
+split= 7,depth=  7-> Accuracy=0.7849166666667
+
+"""
