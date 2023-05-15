@@ -24,8 +24,8 @@ data=tf.keras.datasets.cifar100.load_data()
 
 def cifar100_data():
     (train_images, train_labels), (test_images, test_labels) = tf.keras.datasets.cifar100.load_data()
-    train_images = train_images/len(train_images)
-    test_images = test_images/len(test_images)
+    train_images=train_images/255.0
+    test_images=test_images/255.0
     return train_images, train_labels, test_images, test_labels
 
 '''
@@ -60,8 +60,8 @@ függvény neve: model_compile
 '''
 
 def model_compile(model):
-    compiled=model.compile(optimizer='adam', loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),metrics=['accuracy'])
-    return compiled
+    model.compile(optimizer='adam',loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),metrics=['accuracy'])
+    return model
 
 '''
 Készíts egy metódust, ami a bemeneti hálót feltanítja.
@@ -72,8 +72,9 @@ return type: keras.engine.sequential.Sequential
 függvény neve: model_fit
 '''
 
-def model_fit(model, epochs, train_images, train_labels):
-    return model.fit(train_images, train_labels, epochs=epochs)
+def model_fit(model,epochs,train_images,train_labels, ):
+    model.fit(train_images, train_labels, epochs=epochs)
+    return model
 
 '''
 Készíts egy metódust, ami a bemeneti hálót kiértékeli a teszt adatokon.
